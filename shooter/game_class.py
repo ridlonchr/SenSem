@@ -1,4 +1,4 @@
-from soilder import *
+from soldier import *
 
 class Game(object):
 

@@ -1,4 +1,4 @@
-from shooter import *
+from game_class import *
 
 newGame = Game()
 """
@@ -11,10 +11,10 @@ aliveSoilders = len(newGame.soilders)
 
 while aliveSoilders > 1:
 
-"""
+
     for name in sorted(newGame.soilders.keys() ):
         print "\n", name, newGame.soilders[name]
-"""
+
 
     first = int(raw_input("Who fires? "))
     second = int(raw_input("Who at? " ))
