@@ -4,11 +4,11 @@
 
 from random import randint
 
-class Soldier_container(self):
+class Soldier_container(object):
 
     def __init__ (self):
-        soldiers = {}
-        player_count  = 0
+        self.soldiers = {}
+        self.player_count  = 0
 
 
     def add_to_dict(self, player):
@@ -16,7 +16,6 @@ class Soldier_container(self):
 
         player.player_count += 1
         self.player_number = int(player.player_count)
-        #print self.player_number
         player.soldiers[self.player_number] = self.name
 
     def print_dict(self):
@@ -38,6 +37,7 @@ class Soldier(object):
         self.accuracy = 1
 
 
+
     def __str__(self):
 
         if self.alive:
@@ -45,15 +45,38 @@ class Soldier(object):
         else:
             return "%s (DEAD)"%self.name
 
+    def die(self):
+
+        self.alive = False
+        print self.name, "is down!"
+
+    def reload(self):
+        self.ammo = 15
+
+    def attack(self, enemy):
+        # will call the d20 attack system
+        pass
+
+
+
+
+class Infantry(Soldier):
+    pass
+
+class Medic(Soldier):
+    pass
+class Sniper(Soldier):
+    pass
 
 
 #test
+b = Soldier_container()
 a = Soldier("Christian")
-a.add_to_dict(a)
-a.print_dict()
+b.add_to_dict(a)
+#b.print_dict()
 a1 = Soldier("Jeff")
-a1.add_to_dict(a1)
-a1.print_dict()
+b.add_to_dict(a1)
+#a1.print_dict()
 a2 = Soldier("Charles")
-a2.add_to_dict(a2)
-a2.print_dict()
+b.add_to_dict(a2)
+b.print_dict()

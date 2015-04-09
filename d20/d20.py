@@ -14,12 +14,13 @@ class d20_Combat(object):
 
         self.attacker = attacker
         self.defender = defender
+        crit = False
 
-    def attack_roll(self):
+    def attack_roll(self, attacker):
         """
         attack = attack role (d20) + attack bonus
-        melee attack bonus = Base Weapon damage + strength modifier + size modifier
-        ranged attack bonus = Base attack bonus + Dexterity modifier + range penalty + size modifier
+        melee attack bonus = Base Weapon damage + strength modifier
+        ranged attack bonus = Base attack bonus + Dexterity modifier + range penalty
 
         # size needs to be replaced with an appropiate attribute
 
@@ -27,6 +28,13 @@ class d20_Combat(object):
 
         a natural roll of 1 = automatic miss
         """
+
+        roll = randint(1,20)
+
+        if roll == 20:
+            self.crit = self.critical_strike()
+        
+
 
 
     def defense_roll(self):
