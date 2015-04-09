@@ -14,9 +14,9 @@ class Soldier_container(object):
     def add_to_dict(self, player):
         # add the player to the soldier dict
 
-        player.player_count += 1
-        self.player_number = int(player.player_count)
-        player.soldiers[self.player_number] = self.name
+        self.player_count += 1
+        self.player_number = int(self.player_count)
+        self.soldiers[self.player_number] = player.name
 
     def print_dict(self):
         for player in sorted(self.soldiers.keys()):
@@ -24,19 +24,6 @@ class Soldier_container(object):
 
 # attributes
 class Soldier(object):
-
-    def __init__(self, name):
-        self.name = name
-        self.hitpoints = 10
-        self.armor = 1
-        self.strength = 1
-        self.dexterity = 1
-        self.constition = 1
-        self.knowledge = 1
-        self.luck = 1
-        self.accuracy = 1
-
-
 
     def __str__(self):
 
@@ -61,22 +48,53 @@ class Soldier(object):
 
 
 class Infantry(Soldier):
-    pass
+
+    def __init__(self, name):
+        self.name = name
+        self.hitpoints = 10
+        self.armor = 1
+        self.strength = 1
+        self.dexterity = 1
+        self.constition = 1
+        self.knowledge = 1
+        self.luck = 1
+        self.accuracy = 1
 
 class Medic(Soldier):
-    pass
+
+    def __init__(self, name):
+        self.name = name
+        self.hitpoints = 10
+        self.armor = 1
+        self.strength = 1
+        self.dexterity = 1
+        self.constition = 1
+        self.knowledge = 1
+        self.luck = 1
+        self.accuracy = 1
+
 class Sniper(Soldier):
-    pass
+
+    def __init__(self, name):
+        self.name = name
+        self.hitpoints = 10
+        self.armor = 1
+        self.strength = 1
+        self.dexterity = 1
+        self.constition = 1
+        self.knowledge = 1
+        self.luck = 1
+        self.accuracy = 1
 
 
 #test
 b = Soldier_container()
-a = Soldier("Christian")
+a = Infantry("Christian")
 b.add_to_dict(a)
 #b.print_dict()
-a1 = Soldier("Jeff")
+a1 = Medic("Jeff")
 b.add_to_dict(a1)
 #a1.print_dict()
-a2 = Soldier("Charles")
+a2 = Sniper("Charles")
 b.add_to_dict(a2)
 b.print_dict()
