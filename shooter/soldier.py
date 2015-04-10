@@ -86,8 +86,9 @@ class Sniper(Soldier):
         self.luck = 1
         self.accuracy = 1
 
+"""
+test
 
-#test
 b = Soldier_container()
 a = Infantry("Christian")
 b.add_to_dict(a)
@@ -98,3 +99,4 @@ b.add_to_dict(a1)
 a2 = Sniper("Charles")
 b.add_to_dict(a2)
 b.print_dict()
+"""
