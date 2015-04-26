@@ -1,6 +1,6 @@
 from random import randint
 import pygame
-import d20.d20 as d20
+import d20
 
 
 class Soilder(object):

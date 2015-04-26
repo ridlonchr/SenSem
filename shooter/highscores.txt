@@ -1,0 +1,10 @@
+1. ColonelSanders 1000
+2. GeneralWinston 900
+3. MajorMiles 800
+4. LieutenantJean 700
+5. CaptainKrunch 600
+6. OfficerKevin 500
+7. SergeantRivers 400
+8. CorporalRogers 300
+9. PrivateLang 200
+10. NoobMcGee 100
