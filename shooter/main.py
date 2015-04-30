@@ -1,8 +1,28 @@
-from game_class import *
+from thegame import *
 
-pygame.display.set_caption('Infinite War')
-gm = GameMenu()
-gm.run()
+def main():
+    pygame.display.set_caption('Infinite War')
+    gm = GameMenu()
+    ngs = NewGameScreen()
+    hs = HighScoreScreen()
+
+    while True:
+        gm.run()
+        if gm.nextscreen == 1:
+            ngs.run()
+            if ngs.nextscreen == 3:
+                name = ngs.playerName
+                tgs = TheGameScreen(name)
+                tgs.run()
+        elif gm.nextscreen == 0:
+            gm.run()
+        elif gm.nextscreen == 2:
+            hs.run()
+        else:
+            sys.exit()
+
+if __name__ == '__main__':
+    main()
 
 
 """

@@ -357,7 +357,7 @@ class LoadingScreen(GameScreen):
 
 class NewGameScreen(GameScreen):
     def __init__(self):
-        self.playerName = ''
+        self.playerName = 'Christian'
         my_items = ('Continue', '')
 
         self.funcs = {'Continue': move_on,'' : move_on}
@@ -457,111 +457,11 @@ class NewGameScreen(GameScreen):
 
             if rendered_text:
                 self.screen.blit(rendered_text, my_rect)
-            #pygame.display.flip()
 
 
-            pygame.display.flip()
-
-class TheGameScreen(GameScreen):
-    def __init__(self):
-        # create mt menu items
-        soldier1 = ('Attack', 'Melee' ,'Reload')
-        soldier2 = ('Attack', 'Heal' ,'Reload')
-        soldier3 = ('Attack', 'Snipe' ,'Reload')
-
-        my_items = soldier1 + soldier2 + soldier3
-        # dict of functions that will hook up to my functions
-        self.funcs = {'Attack': attack,
-                      'Melee' : melee,
-                      'Reload': reload_wep,
-                      'Heal'  : heal,
-                      'Snipe' : snipe}
-
-        GameScreen.__init__(self,'pic/gamebg.png',"sound/menu_song.wav",self.funcs)
-
-        self.menu_items = []
-        for index, item in enumerate(my_items):
-            #initialize a menu item
-            menu_item = MenuItem(item)
-
-            if len(self.menu_items) <=2:
-                #get coordinates for the buttons
-                posx = (self.screen_width / 2) - (menu_item.width / 2)
-                posy = ((300) +  ((index * 3) + index * menu_item.height) + 50)
-
-                #add the menu_item to the GameMenu
-                menu_item.set_position(posx, posy)
-                menu_item.set_rect(posx-3, posy-2)
-                self.menu_items.append(menu_item)
-            elif len(self.menu_items) <=5 and len(self.menu_items) > 2:
-                #get coordinates for the buttons
-                posx = ((self.screen_width / 2) - (menu_item.width / 2)+70)
-                posy = ((300) +  ((index * 3) + index * menu_item.height) + 50)
-
-                #add the menu_item to the GameMenu
-                menu_item.set_position(posx, posy)
-                menu_item.set_rect(posx-3, posy-2)
-                self.menu_items.append(menu_item)
-            elif len(self.menu_items) <=8 and len(self.menu_items) > 5:
-                #get coordinates for the buttons
-                posx = ((self.screen_width / 2) - (menu_item.width / 2)+140)
-                posy = ((300) +  ((index * 3) + index * menu_item.height) + 50)
-
-                #add the menu_item to the GameMenu
-                menu_item.set_position(posx, posy)
-                menu_item.set_rect(posx-3, posy-2)
-                self.menu_items.append(menu_item)
-
-        self.mouse_visible = True
-        self.cur_item = None
-        self.nextscreen = 0
-
-    def run(self):
-        self.is_running = True
-        while self.is_running:
-
-            #limit fps to fitty
-            self.clock.tick(50)
-
-            mouse_position = pygame.mouse.get_pos()
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.is_running = False
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    self.mouse_visible = False
-                    self.set_keyboard_selection(event.key)
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    for item in self.menu_items:
-                        if item.is_mouse_selection(mouse_position):
-                            if item.text == 'Quit':
-                                self.funcs[item.text]()
-                                self.is_running = False
-                            if item.text == 'Back':
-                                return
-
-                            else:
-                                self.funcs[item.text](self)
-                                self.is_running = False
-
-            # checks to see if the mouse has moved, shows the cursur again if it was off
-            if pygame.mouse.get_rel() != (0, 0):
-                self.mouse_visible = True
-                self.cur_item = None
-
-            self.toggle_mouse_visibility()
-
-            #redraw bg
-            self.screen.blit(self.background, self.background_rect)
-
-            #draw the items and check for a mouseover if the mouse is visible
-            for item in self.menu_items:
-                if self.mouse_visible:
-                    self.toggle_text_mouseover(item, mouse_position)
-                self.screen.blit(item.label, item.position)
 
             pygame.display.flip()
+
 
 """
 This Class generates the high scores page
@@ -642,16 +542,7 @@ def move_on(name,old_screen):
 
 def back(old_screen):
     old_screen.nextscreen = 0
-def attack():
-    pass
-def reload_wep():
-    pass
-def melee():
-    pass
-def snipe():
-    pass
-def heal():
-    pass
+
 
 # tests
 if __name__ == '__main__':
